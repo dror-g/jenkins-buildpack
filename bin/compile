@@ -45,7 +45,6 @@ mkdir -p $build_dir/.profile.d
 echo "export PATH=\"\$HOME/vendor/jre/bin:\$HOME/bin:\$PATH\";" > $build_dir/.profile.d/jre.sh
 
 status "Importing config from Swift"
-source ~/credentials
 TOKEN=`curl -k -X POST -si https://identity.uk-1.cloud.global.fujitsu.com/v3/auth/tokens -H "Content-Type:application/json" -H "Accept:application/json" -d '{"auth":{"identity":{"methods":["password"],"password":{"user":{"domain":{"name":"'$DOMAIN'"}, "name":"'$USER_NAME'", "password": "'"$USER_PW"'"}}}, "scope": { "project": {"id":"'$PROJECT_ID'"}}}}'`
 
 status "Creating container"
