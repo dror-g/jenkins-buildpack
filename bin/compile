@@ -48,8 +48,7 @@ status "Importing config from Swift"
 TOKEN=`curl -k -X POST -si https://identity.uk-1.cloud.global.fujitsu.com/v3/auth/tokens -H "Content-Type:application/json" -H "Accept:application/json" -d '{"auth":{"identity":{"methods":["password"],"password":{"user":{"domain":{"name":"'$DOMAIN'"}, "name":"'$USER_NAME'", "password": "'"$USER_PW"'"}}}, "scope": { "project": {"id":"'$PROJECT_ID'"}}}}'| awk '/X-Subject-Token/ {print $2}'`
 
 status "Creating container"
-curl -k -X POST -si https://objectstorage.uk-1.cloud.global.fujitsu.com/v1/AUTH_$PROJECT_ID/jenkins -H "X-Auth-Token: $TOKEN"
-
+curl -k -X PUT -si https://objectstorage.uk-1.cloud.global.fujitsu.com/v1/AUTH_$PROJECT_ID/jenkins -H "X-Auth-Token: $TOKEN"
 
 
 status "Done."
