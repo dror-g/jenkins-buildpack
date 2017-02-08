@@ -49,6 +49,8 @@ TOKEN=`curl -k -X POST -si https://identity.uk-1.cloud.global.fujitsu.com/v3/aut
 
 status "Creating container"
 curl -k -X PUT -si https://objectstorage.uk-1.cloud.global.fujitsu.com/v1/AUTH_$PROJECT_ID/jenkins -H "X-Auth-Token: $TOKEN"
+status "Getting conf"
+curl -k -X PUT -si https://objectstorage.uk-1.cloud.global.fujitsu.com/v1/AUTH_$PROJECT_ID/jenkins/config.xml -H "X-Auth-Token: $TOKEN" -H "Content-Type: text/html" -d "@$HOME/.jenkins/config.xml"
 
 
 status "Done."
