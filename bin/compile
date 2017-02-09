@@ -53,5 +53,6 @@ status "Getting conf"
 curl -k -X PUT -si https://objectstorage.uk-1.cloud.global.fujitsu.com/v1/AUTH_$PROJECT_ID/jenkins/config.xml -H "X-Auth-Token: $TOKEN" -H "Content-Type: text/html" -d "@$HOME/.jenkins/config.xml"
 
 mv $bp_dir/bin/cf $build_dir/cf
+chmod +x $build_dir/cf
 
 status "Done."
